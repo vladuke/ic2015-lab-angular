@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="">
+    <form ng-if="!applicantFound" ng-submit="createApplicant(myId)" ng-controller="ApplicantCtrl">
+      Age: <input type="text" ng-model="applicant.age"/><p/>
+      ZIP: <input type="text" ng-model="applicant.zip"/><p/>
+      Smoker: <input type="checkbox" ng-model="applicant.smoker"/><p/>
+      <input type="submit"/>
+    </form>
+
+    <ul ng-if="applicantFound">
+      <li>ID: {{applicant.id}}</li>
+      <li>Age: {{applicant.age}}</li>
+      <li>ZIP: {{applicant.zip}}</li>
+      <li>Smoker: {{applicant.smoker}}</li>
+    </ul>
+  </div>
+
+  <p/>
+  <h4>Create Plan</h4>
+  <form ng-submit="createPlan(myId)" ng-controller="ApplicantCtrl">
+    <label>Category:</label>
+    <select ng-model="plan.category">
+      <option>Bronze</option>
+      <option>Silver</option>
+    </select>
+    <p/>
+    <label>Copay:</label> <input type="text" ng-model="plan.copay"/><p/>
+    <label>Coinsurance:</label> <input type="text" ng-model="plan.coinsurance"/><p/>
+    <label>Deductible:</label><input type="text" ng-model="plan.deductible"/><p/>
+    <label>Non Essential Benefits:</label><input type="checkBox" ng-model="plan.nonEssentialBenefits"/><p/>
+    <input type="submit"/>
+  </form>
+
+  <div ng-if="plans.length > 0">
+    <table border="1">
+      <tr>
+        <th>Category</th>
+        <th>Copay</th>
+        <th>Coinsurance</th>
+        <th>Deductible</th>
+        <th>Non-Essentials</th>
+        <th>Premiums</th>
+      </tr>
+      <tr ng-repeat="plan in plans" >
+        <td>{{plan.category}}</td>
+        <td>{{plan.copay}}</td>
+        <td>{{plan.deductible}}</td>
+        <td>{{plan.coinsurance}}</td>
+        <td>{{plan.nonEssentialBenefits}}</td>
+        <td><a href="#/me/{{plan.applicantId}}/{{plan.id}}">Premiums</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <ul ng-repeat="prem in premiums">
+      <li>{{prem.type}} : {{prem.value}}</li>
+    </ul>
+  </div>
+</div>
