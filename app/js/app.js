@@ -21,11 +21,11 @@ quotemeApp.config(['$routeProvider',
       }).
       when('/me/:myId/:planId', {
         templateUrl: 'partials/me.html',
-        controller: 'PremiumCtrl'
+        controller: 'MeCtrl'
+      }).
+      otherwise({
+        redirectTo: '/me'
       });
-      // otherwise({
-        // redirectTo: '/me'
-      // });
   }]);
 
 //quotemeApp.directive()

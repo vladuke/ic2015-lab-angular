@@ -22,6 +22,7 @@
     <select ng-model="plan.category">
       <option>Bronze</option>
       <option>Silver</option>
+      <option>Gold</option>
     </select>
     <p/>
     <label>Copay:</label> <input type="text" ng-model="plan.copay"/><p/>
@@ -52,9 +53,14 @@
     </table>
   </div>
 
-  <div>
+  <div ng-if="premiums.length > 0">
     <ul ng-repeat="prem in premiums">
       <li>{{prem.type}} : {{prem.value}}</li>
     </ul>
   </div>
+
+  <div ng-if="premiums.length == 0">
+    Premiums are not calculated yet.
+  </div>
+
 </div>

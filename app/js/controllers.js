@@ -34,8 +34,8 @@ quotemeAppControllers.controller('ApplicantCtrl', ['$scope', '$route', 'Applican
   }]);
 
 
-quotemeAppControllers.controller('MeCtrl', ['$scope', '$routeParams','Applicant', 'Plan',
-  function($scope, $routeParams, Applicant, Plan) {
+quotemeAppControllers.controller('MeCtrl', ['$scope', '$routeParams','Applicant', 'Plan', 'Premium',
+  function($scope, $routeParams, Applicant, Plan, Premium) {
     if ($routeParams.myId) {
       $scope.myId = $routeParams.myId;
       $scope.applicant = Applicant.get({id: $routeParams.myId},
@@ -54,6 +54,17 @@ quotemeAppControllers.controller('MeCtrl', ['$scope', '$routeParams','Applicant'
           console.log("plans query failure " + $scope.plansFound);
         }
       );
+
+      if ($routeParams.planId) {
+        $scope.premiums = Premium.query({planId: $routeParams.planId},
+          function success(response) {
+            console.log($scope.premiums);
+          },
+          function failure(response) {
+            console.log("failed: " + response)
+          }
+        );
+      }
     }
   }]);
 

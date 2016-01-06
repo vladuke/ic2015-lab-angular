@@ -14,11 +14,12 @@
 </head>
 <body>
 
-  <form ng-submit="login()" ng-controller="InitCtrl">
-    My ID: <input ng-model="myId"/>
-  </form>
+  <div class="container-fluid">
+    <form ng-submit="login()" ng-controller="InitCtrl">
+      My ID: <input ng-model="myId"/>
+    </form>
+  </div>
 
-<!--     <a href="#/me/{{myId}}">Login</a> -->
   <div ng-view></div>
 
 </body>
