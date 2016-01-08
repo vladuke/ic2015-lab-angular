@@ -1,6 +1,4 @@
 {
 	"directory" : "app/bower_components",
 	"interactive" : false,
-	"proxy" : "http://192.168.11.17:8080",
-	"https-proxy" : "http://192.168.11.17:8080"
 }
